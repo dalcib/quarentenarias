@@ -1,5 +1,6 @@
-import {observable, computed, acton, useStrict} from 'mobx'
-import db from '/quarentenariasDb'
+import {observable, computed, action, useStrict} from 'mobx'
+//import db from '/quarentenariasDb'
+import db from './lista-Brasil')
 import 'arrayPlus'
 
 useStrict()
@@ -41,7 +42,7 @@ class Quarentenarias {
     (item.taxon === !this.taxon || this.taxon)
   ))
 
-  @action clean = (): void {
+  @action clean = (): void => {
     this.praga = ''
     this.norma = ''
     this.produto = ''
@@ -50,7 +51,7 @@ class Quarentenarias {
     this.taxon = ''
   }
 
-  @action change = (field:string, value: string): void {
+  @action change = (field: string, value: string): void => {
     this[field] = value
   }
 }
