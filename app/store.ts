@@ -7,10 +7,16 @@ useStrict()
 
 interface Requisito {
   norma: string;
+  ano: number;
   produto: string;
+  especie: string;
   uso: string;
   pais: string;
   praga: string;
+  DA: string;
+  IN52: string;
+  revogada: string;
+  processos: string;
   status: string;
   taxon: string;
 }
@@ -33,7 +39,7 @@ class Quarentenarias {
   @computed pragas: string[] = db.unique('praga')
   @computed taxons: string[] = db.unique('taxon')
 
-  @computed filtered: Requisito[] = db.filter(item => (
+  @computed filtered: any /* Requisito[]*/ = db.filter(item => (
     (item.norma === !this.norma || this.norma) &&
     (item.produto === !this.produto || this.praga) &&
     (item.uso === !this.uso || this.uso) &&
