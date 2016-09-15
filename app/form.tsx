@@ -1,0 +1,134 @@
+import * as React from 'react'; // tslint:disable-line:no-unused-variable
+import {Component} from 'react';
+import {View, Text, StyleSheet, /*Picker, TouchableWithoutFeedback */} from 'react-native';
+import {observer} from 'mobx-react/native';
+//import Combo from './../widgets/combo';
+//import Typeahead from './../widgets/typeahead'
+//import GooglePlacesAutocomplete from './../widgets/googleautocomplete'
+import {RaisedButton as Button} from 'material-ui';
+//import {Actions} from 'react-native-router-flux';
+//import {cefitiStore} from './store';
+//import uiStore from './../store'
+
+//type search = {search?(props?: any): void, cefitiResults?(props?: any): void}
+//let actions = Actions as search;
+
+//onPress={()=> Actions.search({source:'listaNomesSci',   onChangeText: (text)=>{this.props.store.ui.searchValue = text}   })}
+//onChangeText: (text)=>{store.handleChanges({target:{value:text, name:'nomeSci'}})}
+
+@observer
+export default class QuarentForm extends Component <{store: any}, {}> {
+  render(): React.ReactElement<any> {
+    //let store: cefitiStore = this.props.store.cefiti;
+    return (
+        <View style={styles.container}>
+
+            <View style={styles.subtitle}>
+                <Text style={styles.text}>
+                    Consulta à Lista de PRagas Quarentenárias para o Brasil--
+                </Text>
+            </View>
+
+            <Subheader text="Espécie Vegetal (nome científico):"  />
+            <View style={styles.button}>
+                <Button  label={'Consultar'}  />
+            </View>
+        </View>
+      );
+  }
+}
+
+const styles = StyleSheet.create<any>({
+    container: {
+        flex: 1,
+        //justifyContent: 'center',
+        //alignItems: 'flex-start'
+    },
+    text: {
+        //fontSize: 14,
+        //textAlign: 'center',
+        margin: 1,
+        borderWidth: 1,
+    },
+    field: {
+        width: 300,
+        flex: 1,
+        backgroundColor: '#FFFFFF',
+        color: 'black',
+        //flex: 0.3,
+        borderWidth: 1,
+        borderColor: 'black',
+        alignSelf: 'center',
+        height: 15,
+        fontSize: 16,
+    },
+    subtitle: {
+        padding: 8
+    },
+    button: {
+        height: 50,
+        flex: 1,
+    }
+});
+
+const Subheader = ({text}) => (
+           <View
+                style={substyles.container}
+            >
+                <Text
+                    style={[styles.text, {
+                        color: 'rgba(0,0,0,.54)',
+                        fontWeight: '500'
+                    }]}
+                >
+                    {text}
+                </Text>
+            </View>
+);
+
+//{paddingLeft: inset ? 72 : 16 }
+
+const substyles = StyleSheet.create({
+    container: {
+        padding: 4,
+        paddingLeft:  16
+    },
+    //text: TYPO.paperFontBody1,
+});
+
+/*
+<Text style={styles.field}
+                onPress={() => actions.search({
+                    source: 'listaNomesSci', field: 'hospSci',
+                    onChange: this.props.store.cefiti.handleChanges.bind(this), storeName: 'cefiti'
+                })}
+                >{store.dados.hospSci} </Text>
+
+            <Subheader text="Espécie Vegetal (nome vulgar):"  />
+            <Text style={styles.field}
+                onPress={() => actions.search({
+                    source: 'listaNomesVul', field: 'hospVul',
+                    onChange: this.props.store.cefiti.handleChanges.bind(this), storeName: 'cefiti'
+                })}
+                >{store.dados.hospVul} </Text>
+
+            <Subheader text="Parte:"  />
+            <Combo
+                source={store.partes} itemLabel={''} itemValue={''}  value={store.dados.prod}
+                name={'prod'} onValueChange={store.handleChanges} />
+
+            <Subheader text="Origem:" />
+            <Combo
+                source={store.estados} itemLabel={'estado'} itemValue={'UF'}
+                value={store.dados.orig} name={'orig'} onValueChange={store.handleChanges} />
+
+            <Subheader text="Destino:" />
+            <Combo
+                source={store.estados} itemLabel={'estado'} itemValue={'UF'}
+                value={store.dados.dest} name={'dest'} onValueChange={store.handleChanges} />
+
+            <View style={styles.button}>
+                <Button  text={'Consultar'} overrides={{ textColor: 'paperGreen', backgroundColor: 'paperGreen' }}
+                    onPress={actions.cefitiResults} />
+            </View>
+            */

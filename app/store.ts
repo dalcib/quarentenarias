@@ -1,6 +1,6 @@
 import {observable, computed, action, useStrict} from 'mobx'
 //import db from '/quarentenariasDb'
-import db from './lista-Brasil')
+import db from './lista-Brasil'
 import 'arrayPlus'
 
 useStrict()
@@ -17,7 +17,6 @@ interface Requisito {
   IN52: string;
   revogada: string;
   processos: string;
-  status: string;
   taxon: string;
 }
 
@@ -32,21 +31,23 @@ class Quarentenarias {
   @observable pais: string = ''
   @observable taxon: string = ''
 
-  @computed normas: string[] = db.unique('norma')
-  @computed produtos: string[] = db.unique('produto')
-  @computed usos: string[] = db.unique('uso')
-  @computed paises: string[] = db.unique('pais')
-  @computed pragas: string[] = db.unique('praga')
-  @computed taxons: string[] = db.unique('taxon')
+  @computed get normas(): string[] {return db.unique('norma')}
+  @computed get produtos(): string[] {return db.unique('produto')}
+  @computed get usos(): string[] {return db.unique('uso')}
+  @computed get paises(): string[] {return db.unique('pais')}
+  @computed get pragas(): string[] {return db.unique('praga')}
+  @computed get taxons(): string[] {return db.unique('taxon')}
 
-  @computed filtered: any /* Requisito[]*/ = db.filter(item => (
-    (item.norma === !this.norma || this.norma) &&
-    (item.produto === !this.produto || this.praga) &&
-    (item.uso === !this.uso || this.uso) &&
-    (item.pais === !this.pais || this.pais) &&
-    (item.praga === !this.praga || this.praga) &&
-    (item.taxon === !this.taxon || this.taxon)
-  ))
+  @computed get filtered():  Requisito[] {return db.filter(item => (
+    (!this.norma || item.norma === this.norma ) &&
+    (!this.praga || item.produto === this.produto) &&
+    (!this.uso || item.uso === this.uso) &&
+    (! this.pais || item.pais === this.pais) &&
+    (!this.praga || item.praga === this.praga) &&
+    (!this.taxon || item.taxon === this.taxon)
+  ))}
+
+  @computed get group(): any {return db.groupBy('taxon', ['praga'])}
 
   @action clean = (): void => {
     this.praga = ''

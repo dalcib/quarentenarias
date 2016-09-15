@@ -17,18 +17,6 @@ class Quarentenarias {
         this.uso = '';
         this.pais = '';
         this.taxon = '';
-        this.normas = db.unique('norma');
-        this.produtos = db.unique('produto');
-        this.usos = db.unique('uso');
-        this.paises = db.unique('pais');
-        this.pragas = db.unique('praga');
-        this.taxons = db.unique('taxon');
-        this.filtered = db.filter(item => ((item.norma === !this.norma || this.norma) &&
-            (item.produto === !this.produto || this.praga) &&
-            (item.uso === !this.uso || this.uso) &&
-            (item.pais === !this.pais || this.pais) &&
-            (item.praga === !this.praga || this.praga) &&
-            (item.taxon === !this.taxon || this.taxon)));
         this.clean = () => {
             this.praga = '';
             this.norma = '';
@@ -41,6 +29,21 @@ class Quarentenarias {
             this[field] = value;
         };
     }
+    get normas() { return db.unique('norma'); }
+    get produtos() { return db.unique('produto'); }
+    get usos() { return db.unique('uso'); }
+    get paises() { return db.unique('pais'); }
+    get pragas() { return db.unique('praga'); }
+    get taxons() { return db.unique('taxon'); }
+    get filtered() {
+        return db.filter(item => ((!this.norma || item.norma === this.norma) &&
+            (!this.praga || item.produto === this.produto) &&
+            (!this.uso || item.uso === this.uso) &&
+            (!this.pais || item.pais === this.pais) &&
+            (!this.praga || item.praga === this.praga) &&
+            (!this.taxon || item.taxon === this.taxon)));
+    }
+    get group() { return db.groupBy('taxon', ['praga']); }
 }
 __decorate([
     observable
@@ -62,25 +65,28 @@ __decorate([
 ], Quarentenarias.prototype, "taxon", void 0);
 __decorate([
     computed
-], Quarentenarias.prototype, "normas", void 0);
+], Quarentenarias.prototype, "normas", null);
 __decorate([
     computed
-], Quarentenarias.prototype, "produtos", void 0);
+], Quarentenarias.prototype, "produtos", null);
 __decorate([
     computed
-], Quarentenarias.prototype, "usos", void 0);
+], Quarentenarias.prototype, "usos", null);
 __decorate([
     computed
-], Quarentenarias.prototype, "paises", void 0);
+], Quarentenarias.prototype, "paises", null);
 __decorate([
     computed
-], Quarentenarias.prototype, "pragas", void 0);
+], Quarentenarias.prototype, "pragas", null);
 __decorate([
     computed
-], Quarentenarias.prototype, "taxons", void 0);
+], Quarentenarias.prototype, "taxons", null);
 __decorate([
     computed
-], Quarentenarias.prototype, "filtered", void 0);
+], Quarentenarias.prototype, "filtered", null);
+__decorate([
+    computed
+], Quarentenarias.prototype, "group", null);
 __decorate([
     action
 ], Quarentenarias.prototype, "clean", void 0);
