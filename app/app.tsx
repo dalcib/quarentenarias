@@ -9,7 +9,7 @@ import store from './store';
 //import DevTools from 'mobx-react-devtools'
 //        <DevTools />
 
-export default class App extends React.Component<{store: any},{}> {
+export default class App extends React.Component<{store: any}, {}> {
   render(): React.ReactElement<any> {
     return (
     <div id="resolucao">
@@ -17,23 +17,22 @@ export default class App extends React.Component<{store: any},{}> {
           <div id="topo">
             <div id="identificacao-ministerio">
               <span>
-                    <div id="imagemGov"><a href="http://www.brasil.gov.br" target="_blank" id="brasilgov"></a></div>
+                    <div id="imagemGov"><a href="http://www.brasil.gov.br" target="_blank" id="brasilgov"/></div>
                   </span>
 
             </div>
             <div id="identificacao-sistema" style={{'float':'none'}}>
               <br/>
-              <div style={{'float': 'right','color':'#fff','padding':'5px 10px 5px 15px'}}>Versão 2.1-5</div>
-              <h1>CEFiTI</h1>
+              <div style={{'float': 'right','color':'#fff','padding':'5px 10px 5px 15px'}}>Versão 0.1-1</div>
+              <h1>Pragas Quarentenárias</h1>
               <div style={{'float':'right','color':'#fff','padding':'5px 10px 5px 15px'}}>Data: {(new Date()).toLocaleDateString()}</div>
-              <h2>Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual</h2>
+              <h2>Consolidação da Lista de Pragas Quarentenárias para o Brasil</h2>
             </div>
-            <div id="dados-login"></div>
+            <div id="dados-login"/>
           </div>
         </div>
         <div id="moldura-navegacao-global">
-          <div id="navegacao-global">
-          </div>
+          <div id="navegacao-global" />
         </div>
 
         <div id="corpo">
@@ -41,7 +40,6 @@ export default class App extends React.Component<{store: any},{}> {
 
             <Form store={store}/>
             <Result />
-
 
           </div>
           <br/>
@@ -66,6 +64,5 @@ export default class App extends React.Component<{store: any},{}> {
     )
   }
 }
-
 
 //ReactDom.render(<App store={store}/>, document.getElementById('app'));

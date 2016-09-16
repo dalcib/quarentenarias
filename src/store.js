@@ -17,6 +17,7 @@ class Quarentenarias {
         this.uso = '';
         this.pais = '';
         this.taxon = '';
+        this.especie = '';
         this.clean = () => {
             this.praga = '';
             this.norma = '';
@@ -25,16 +26,22 @@ class Quarentenarias {
             this.pais = '';
             this.taxon = '';
         };
-        this.change = (field, value) => {
-            this[field] = value;
+        this.change = (field, object) => {
+            if (!object) {
+                this[field] = '';
+            }
+            else {
+                this[field] = object.value;
+            }
         };
     }
-    get normas() { return db.unique('norma').map(item => ({ value: item, label: item })); }
-    get produtos() { return db.unique('produto'); }
-    get usos() { return db.unique('uso'); }
-    get paises() { return db.unique('pais'); }
-    get pragas() { return db.unique('praga'); }
-    get taxons() { return db.unique('taxon'); }
+    get normas() { return db.unique('norma').map((item) => ({ value: item, label: item })); }
+    get produtos() { return db.unique('produto').map((item) => ({ value: item, label: item })); }
+    get usos() { return db.unique('uso').map((item) => ({ value: item, label: item })); }
+    get paises() { return db.unique('pais').map((item) => ({ value: item, label: item })); }
+    get pragas() { return db.unique('praga').map((item) => ({ value: item, label: item })); }
+    get taxons() { return db.unique('taxon').map((item) => ({ value: item, label: item })); }
+    get especies() { return db.unique('especie').map((item) => ({ value: item, label: item })); }
     get filtered() {
         return db.filter(item => ((!this.norma || item.norma === this.norma) &&
             (!this.praga || item.produto === this.produto) &&
@@ -43,7 +50,9 @@ class Quarentenarias {
             (!this.praga || item.praga === this.praga) &&
             (!this.taxon || item.taxon === this.taxon)));
     }
-    get group() { return db.groupBy('taxon', ['praga']); }
+    get group() {
+        return this.filtered.groupBy('taxon', ['praga']).sort((a, b) => a.taxon === b.taxon);
+    }
 }
 __decorate([
     observable
@@ -64,6 +73,9 @@ __decorate([
     observable
 ], Quarentenarias.prototype, "taxon", void 0);
 __decorate([
+    observable
+], Quarentenarias.prototype, "especie", void 0);
+__decorate([
     computed
 ], Quarentenarias.prototype, "normas", null);
 __decorate([
@@ -81,6 +93,9 @@ __decorate([
 __decorate([
     computed
 ], Quarentenarias.prototype, "taxons", null);
+__decorate([
+    computed
+], Quarentenarias.prototype, "especies", null);
 __decorate([
     computed
 ], Quarentenarias.prototype, "filtered", null);

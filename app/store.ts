@@ -20,6 +20,11 @@ interface Requisito {
   taxon: string;
 }
 
+interface Select {
+  value: string
+  label: string
+}
+
 class Quarentenarias {
 
   db: Requisito[] = db
@@ -30,13 +35,15 @@ class Quarentenarias {
   @observable uso: string = ''
   @observable pais: string = ''
   @observable taxon: string = ''
+  @observable especie: string = ''
 
-  @computed get normas(): any[] {return db.unique('norma').map(item => ({value: item, label: item}))}
-  @computed get produtos(): string[] {return db.unique('produto')}
-  @computed get usos(): string[] {return db.unique('uso')}
-  @computed get paises(): string[] {return db.unique('pais')}
-  @computed get pragas(): string[] {return db.unique('praga')}
-  @computed get taxons(): string[] {return db.unique('taxon')}
+  @computed get normas(): any[] {return db.unique('norma').map((item): Select[] => ({value: item, label: item}))}
+  @computed get produtos(): string[] {return db.unique('produto').map((item): Select[]  => ({value: item, label: item}))}
+  @computed get usos(): string[] {return db.unique('uso').map((item): Select[]  => ({value: item, label: item}))}
+  @computed get paises(): string[] {return db.unique('pais').map((item): Select[]  => ({value: item, label: item}))}
+  @computed get pragas(): string[] {return db.unique('praga').map((item): Select[]  => ({value: item, label: item}))}
+  @computed get taxons(): string[] {return db.unique('taxon').map((item): Select[]  => ({value: item, label: item}))}
+  @computed get especies(): string[] {return db.unique('especie').map((item): Select[]  => ({value: item, label: item}))}
 
   @computed get filtered():  Requisito[] {return db.filter(item => (
     (!this.norma || item.norma === this.norma ) &&
@@ -47,7 +54,9 @@ class Quarentenarias {
     (!this.taxon || item.taxon === this.taxon)
   ))}
 
-  @computed get group(): any {return db.groupBy('taxon', ['praga'])}
+  @computed get group(): any {
+    return this.filtered.groupBy('taxon', ['praga']).sort ( (a, b) => a.taxon === b.taxon)
+  }
 
   @action clean = (): void => {
     this.praga = ''
@@ -58,11 +67,17 @@ class Quarentenarias {
     this.taxon = ''
   }
 
-  @action change = (field: string, value: string): void => {
-    this[field] = value
+  @action change = (field: string, object: Select): void => {
+    if (!object) {
+      this[field] = ''
+    } else {
+      this[field] = object.value
+    }
   }
 }
 
 const store = new Quarentenarias()
+
+//console.log(store.group[1])
 
 export default store

@@ -26,12 +26,14 @@ export default class QuarentForm extends Component <{store: any}, {}> {
         <View style={styles.container}>
 
             <View style={styles.subtitle}>
-                <Text style={styles.text}>
-                    Consulta à Lista de Pragas Quarentenárias para o Brasil--
-                </Text>
-                  <Select
-                    options={store.normas}
-                />
+                <Text style={styles.text}>Consulta à Lista de Pragas Quarentenárias para o Brasil -- {store.group.length} </Text>
+                  Praga: <Select placeholder="Praga" options={store.pragas} value={store.praga} onChange={store.change.bind(this, 'praga')} />
+                  Pais: <Select options={store.paises} value={store.pais} onChange={store.change.bind(this, 'pais')} />
+                  Cultura: <Select options={store.produtos} value={store.produto} onChange={store.change.bind(this, 'produto')} />
+                  Espécie Vegetal: <Select options={store.especies} value={store.especie} onChange={store.change.bind(this, 'especie')} />
+                  Uso Proposto: <Select options={store.usos} value={store.uso} onChange={store.change.bind(this, 'uso')}/>
+                  Grupo Taxionômico: <Select options={store.taxons} value={store.taxon} onChange={store.change.bind(this, 'taxon')} />
+                  Norma: <Select options={store.normas} value={store.norma} onChange={store.change.bind(this, 'norma')} />
             </View>
 
             <Subheader text="Espécie Vegetal (nome científico):"  />
