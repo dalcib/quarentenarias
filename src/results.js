@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScrollView, View, Text, StyleSheet } from 'react-native';
-import { Subheader } from 'material-ui';
+//import {/*Button, TYPO,*/ Subheader, /*List, Divider*/ } from 'material-ui';
 //import Quarentenarias from './store';
 //let onPressText = (): void => {console.log('onPress'); };
 function Result() {
@@ -14,7 +14,7 @@ function Result() {
         React.createElement(ScrollView, null, 
             React.createElement(View, null, 
                 React.createElement(View, null, 
-                    React.createElement(Subheader, null, "TRÂNSITO NACIONAL DE PARTIDA IMPORTADA\" "), 
+                    React.createElement("h2", null, "TRÂNSITO NACIONAL DE PARTIDA IMPORTADA\" "), 
                     React.createElement(Text, null, "1 – SE A PARTIDA AINDA NÃO FOI INTERNALIZADA PELO MAPA E ESTIVER EM TRÂNSITO A UMA ÁREA ALFANDEGADA NO INTERIOR DO BRASIL:"), 
                     React.createElement(Text, null, "- Certificado Fitossanitário ou Certificado Fitossanitário de Reexportação;")), 
                 React.createElement(View, null, 
@@ -24,11 +24,11 @@ function Result() {
                 React.createElement(View, null, 
                     React.createElement(Text, null, "3 – SE A PARTIDA JÁ FOI INTERNALIZADA PELO MAPA E ESTIVER SAINDO DO DESTINO DECLARADO NA IMPORTAÇÃO, EM DIREÇÃO A QUALQUER UF:"), 
                     React.createElement(Text, null, "- Cumprir os requisitos fitossanitários para o trânsito interestadual.")), 
-                React.createElement(Subheader, null, "TRÂNSITO NACIONAL DE PARTIDA EXPORTADA "), 
+                React.createElement("h2", null, "TRÂNSITO NACIONAL DE PARTIDA EXPORTADA "), 
                 React.createElement(View, null, 
                     React.createElement(Text, null, "1 – SE A PARTIDA JÁ FOI ESTIVER EM TRÂNSITO A PONTO DE EGRESSO:"), 
                     React.createElement(Text, null, "- Não se aplicam as exigências para o trânsito interestadual.")), 
-                React.createElement(Subheader, null, "LEGISLAÇÃO GERAL"))
+                React.createElement("h2", null, "LEGISLAÇÃO GERAL"))
         )));
 }
 const styles = StyleSheet.create({

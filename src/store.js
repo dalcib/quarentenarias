@@ -6,7 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { observable, computed, action, useStrict } from 'mobx';
 import db from './lista-Brasil';
-import 'arrayPlus';
+import './arrayplus';
 useStrict();
 class Quarentenarias {
     constructor() {
@@ -29,7 +29,7 @@ class Quarentenarias {
             this[field] = value;
         };
     }
-    get normas() { return db.unique('norma'); }
+    get normas() { return db.unique('norma').map(item => ({ value: item, label: item })); }
     get produtos() { return db.unique('produto'); }
     get usos() { return db.unique('uso'); }
     get paises() { return db.unique('pais'); }
@@ -93,5 +93,6 @@ __decorate([
 __decorate([
     action
 ], Quarentenarias.prototype, "change", void 0);
-export default Quarentenarias;
+const store = new Quarentenarias();
+export default store;
 //# sourceMappingURL=store.js.map

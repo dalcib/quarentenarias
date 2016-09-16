@@ -1,7 +1,7 @@
 import {observable, computed, action, useStrict} from 'mobx'
 //import db from '/quarentenariasDb'
 import db from './lista-Brasil'
-import 'arrayPlus'
+import './arrayplus'
 
 useStrict()
 
@@ -31,7 +31,7 @@ class Quarentenarias {
   @observable pais: string = ''
   @observable taxon: string = ''
 
-  @computed get normas(): string[] {return db.unique('norma')}
+  @computed get normas(): any[] {return db.unique('norma').map(item => ({value: item, label: item}))}
   @computed get produtos(): string[] {return db.unique('produto')}
   @computed get usos(): string[] {return db.unique('uso')}
   @computed get paises(): string[] {return db.unique('pais')}
@@ -63,4 +63,6 @@ class Quarentenarias {
   }
 }
 
-export default Quarentenarias
+const store = new Quarentenarias()
+
+export default store

@@ -1,7 +1,7 @@
 import * as React from 'react'; // tslint:disable-line:no-unused-variable
 //import {Component} from 'react'
 import {ScrollView, View, Text, StyleSheet, /*Picker, Linking, TouchableWithoutFeedback, TouchableHighlight*/ } from 'react-native';
-import {/*Button, TYPO,*/ Subheader, /*List, Divider*/ } from 'material-ui';
+//import {/*Button, TYPO,*/ Subheader, /*List, Divider*/ } from 'material-ui';
 //import Quarentenarias from './store';
 
 //let onPressText = (): void => {console.log('onPress'); };
@@ -23,7 +23,7 @@ function Result(): any {
 
         <View>
           <View>
-            <Subheader>TRÂNSITO NACIONAL DE PARTIDA IMPORTADA" </Subheader>
+            <h2>TRÂNSITO NACIONAL DE PARTIDA IMPORTADA" </h2>
             <Text>
               1 – SE A PARTIDA AINDA NÃO FOI INTERNALIZADA PELO MAPA E ESTIVER EM TRÂNSITO A UMA ÁREA ALFANDEGADA NO INTERIOR DO BRASIL:
             </Text>
@@ -42,14 +42,14 @@ function Result(): any {
             </Text>
             <Text>- Cumprir os requisitos fitossanitários para o trânsito interestadual.</Text>
           </View>
-          <Subheader>TRÂNSITO NACIONAL DE PARTIDA EXPORTADA </Subheader>
+          <h2>TRÂNSITO NACIONAL DE PARTIDA EXPORTADA </h2>
           <View>
             <Text>
               1 – SE A PARTIDA JÁ FOI ESTIVER EM TRÂNSITO A PONTO DE EGRESSO:
             </Text>
             <Text>- Não se aplicam as exigências para o trânsito interestadual.</Text>
           </View>
-          <Subheader>LEGISLAÇÃO GERAL</Subheader>
+          <h2>LEGISLAÇÃO GERAL</h2>
         </View>
 
       </ScrollView>

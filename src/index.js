@@ -1,7 +1,7 @@
 import { AppRegistry } from 'react-native';
-import QuarentForm from './form';
-AppRegistry.registerComponent('QuarentForm', () => QuarentForm);
-AppRegistry.runApplication('QuarentForm', {
+import App from './app';
+AppRegistry.registerComponent('App', () => App);
+AppRegistry.runApplication('App', {
     rootTag: document.getElementById('root')
 });
 //# sourceMappingURL=index.js.map

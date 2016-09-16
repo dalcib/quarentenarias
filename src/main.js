@@ -4,7 +4,7 @@ import Form from './form';
 import store from './store';
 //import DevTools from 'mobx-react-devtools'
 //        <DevTools />
-export default class App extends React.Component {
+class App extends React.Component {
     render() {
         return (React.createElement("div", {id: "resolucao"}, 
             React.createElement("div", {id: "moldura-topo"}, 
@@ -16,11 +16,11 @@ export default class App extends React.Component {
                             )
                         )
                     ), 
-                    React.createElement("div", {id: "identificacao-sistema", style: { 'float': 'none' }}, 
+                    React.createElement("div", {id: "identificacao-sistema", style: { "float": "none" }}, 
                         React.createElement("br", null), 
-                        React.createElement("div", {style: { 'float': 'right', 'color': '#fff', 'padding': '5px 10px 5px 15px' }}, "Versão 2.1-5"), 
+                        React.createElement("div", {style: { "float": "right", "color": "#fff", "padding": "5px 10px 5px 15px" }}, "Versão 2.1-5"), 
                         React.createElement("h1", null, "CEFiTI"), 
-                        React.createElement("div", {style: { 'float': 'right', 'color': '#fff', 'padding': '5px 10px 5px 15px' }}, 
+                        React.createElement("div", {style: { "float": "right", "color": "#fff", "padding": "5px 10px 5px 15px" }}, 
                             "Data: ", 
                             (new Date()).toLocaleDateString()), 
                         React.createElement("h2", null, "Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual")), 
@@ -35,7 +35,7 @@ export default class App extends React.Component {
                     React.createElement(Result, null)), 
                 React.createElement("br", null), 
                 React.createElement("p", {className: "small red center "}, "Este Sistema está em fase de HOMOLOGAÇÃO, devido a isso as informações obtidas devem ser verificadas na legislação pertinente."), 
-                React.createElement("p", {className: "small red center "}, "ccSe for encontrada alguma informação que não reflita corretamente a legislação, favor informar o SSV-MT no e-mail abaixo."), 
+                React.createElement("p", {className: "small red center "}, "Se for encontrada alguma informação que não reflita corretamente a legislação, favor informar o SSV-MT no e-mail abaixo."), 
                 React.createElement("br", null), 
                 React.createElement("p", {className: "small center"}, "As informações apresentadas não substituem o texto legal vigente, publicado em Diário Oficial da União"), 
                 React.createElement("br", null), 
@@ -47,4 +47,4 @@ export default class App extends React.Component {
     }
 }
 //ReactDom.render(<App store={store}/>, document.getElementById('app'));
-//# sourceMappingURL=app.js.map
+//# sourceMappingURL=main.js.map

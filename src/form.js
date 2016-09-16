@@ -8,10 +8,9 @@ import * as React from 'react';
 import { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { observer } from 'mobx-react/native';
-import { RaisedButton as Button } from 'material-ui';
-//import {Actions} from 'react-native-router-flux';
-//import {cefitiStore} from './store';
-//import uiStore from './../store'
+import store from './store';
+import Select from 'react-select';
+import './../css/react-select.css';
 //type search = {search?(props?: any): void, cefitiResults?(props?: any): void}
 //let actions = Actions as search;
 //onPress={()=> Actions.search({source:'listaNomesSci',   onChangeText: (text)=>{this.props.store.ui.searchValue = text}   })}
@@ -21,11 +20,11 @@ let QuarentForm = class QuarentForm extends Component {
         //let store: cefitiStore = this.props.store.cefiti;
         return (React.createElement(View, {style: styles.container}, 
             React.createElement(View, {style: styles.subtitle}, 
-                React.createElement(Text, {style: styles.text}, "Consulta à Lista de PRagas Quarentenárias para o Brasil--")
-            ), 
+                React.createElement(Text, {style: styles.text}, "Consulta à Lista de Pragas Quarentenárias para o Brasil--"), 
+                React.createElement(Select, {options: store.normas})), 
             React.createElement(Subheader, {text: "Espécie Vegetal (nome científico):"}), 
             React.createElement(View, {style: styles.button}, 
-                React.createElement(Button, {label: 'Consultar'})
+                React.createElement("button", {value: "adssad"})
             )));
     }
 };

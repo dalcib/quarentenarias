@@ -5,10 +5,12 @@ import {observer} from 'mobx-react/native';
 //import Combo from './../widgets/combo';
 //import Typeahead from './../widgets/typeahead'
 //import GooglePlacesAutocomplete from './../widgets/googleautocomplete'
-import {RaisedButton as Button} from 'material-ui';
+//import {RaisedButton as Button} from 'material-ui';
 //import {Actions} from 'react-native-router-flux';
 //import {cefitiStore} from './store';
-//import uiStore from './../store'
+import store from './store'
+import Select from 'react-select';
+import './../css/react-select.css';
 
 //type search = {search?(props?: any): void, cefitiResults?(props?: any): void}
 //let actions = Actions as search;
@@ -25,13 +27,16 @@ export default class QuarentForm extends Component <{store: any}, {}> {
 
             <View style={styles.subtitle}>
                 <Text style={styles.text}>
-                    Consulta à Lista de PRagas Quarentenárias para o Brasil--
+                    Consulta à Lista de Pragas Quarentenárias para o Brasil--
                 </Text>
+                  <Select
+                    options={store.normas}
+                />
             </View>
 
             <Subheader text="Espécie Vegetal (nome científico):"  />
             <View style={styles.button}>
-                <Button  label={'Consultar'}  />
+                <button  value="adssad"  />
             </View>
         </View>
       );
