@@ -1,8 +1,8 @@
 import * as React from 'react'; // tslint:disable-line:no-unused-variable
 import {Component} from 'react';
-import {View, Text, StyleSheet, /*Picker, TouchableWithoutFeedback */} from 'react-native';
+import {View,  StyleSheet, /*Text, Picker, TouchableWithoutFeedback */} from 'react-native';
 import {observer} from 'mobx-react/native';
-//import Combo from './../widgets/combo';
+import Result from './results';
 //import Typeahead from './../widgets/typeahead'
 //import GooglePlacesAutocomplete from './../widgets/googleautocomplete'
 //import {RaisedButton as Button} from 'material-ui';
@@ -19,27 +19,24 @@ import './../css/react-select.css';
 //onChangeText: (text)=>{store.handleChanges({target:{value:text, name:'nomeSci'}})}
 
 @observer
-export default class QuarentForm extends Component <{store: any}, {}> {
+export default class QuarentForm extends Component <{}, {}> {
   render(): React.ReactElement<any> {
     //let store: cefitiStore = this.props.store.cefiti;
     return (
         <View style={styles.container}>
 
             <View style={styles.subtitle}>
-                <Text style={styles.text}>Consulta à Lista de Pragas Quarentenárias para o Brasil -- {store.group.length} </Text>
-                  Praga: <Select placeholder="Praga" options={store.pragas} value={store.praga} onChange={store.change.bind(this, 'praga')} />
-                  Pais: <Select options={store.paises} value={store.pais} onChange={store.change.bind(this, 'pais')} />
-                  Cultura: <Select options={store.produtos} value={store.produto} onChange={store.change.bind(this, 'produto')} />
-                  Espécie Vegetal: <Select options={store.especies} value={store.especie} onChange={store.change.bind(this, 'especie')} />
-                  Uso Proposto: <Select options={store.usos} value={store.uso} onChange={store.change.bind(this, 'uso')}/>
-                  Grupo Taxionômico: <Select options={store.taxons} value={store.taxon} onChange={store.change.bind(this, 'taxon')} />
-                  Norma: <Select options={store.normas} value={store.norma} onChange={store.change.bind(this, 'norma')} />
+                <h3>Consulta à Lista de Pragas Quarentenárias para o Brasil </h3>
+                Praga: <Select  options={store.pragas} value={store.praga} onChange={store.change.bind(this, 'praga')} />
+                Pais: <Select options={store.paises} value={store.pais} onChange={store.change.bind(this, 'pais')} />
+                Cultura: <Select options={store.produtos} value={store.produto} onChange={store.change.bind(this, 'produto')} />
+                Espécie Vegetal: <Select options={store.especies} value={store.especie} onChange={store.change.bind(this, 'especie')} />
+                Uso Proposto: <Select options={store.usos} value={store.uso} onChange={store.change.bind(this, 'uso')}/>
+                Grupo Taxionômico: <Select options={store.taxons} value={store.taxon} onChange={store.change.bind(this, 'taxon')} />
+                Norma: <Select options={store.normas} value={store.norma} onChange={store.change.bind(this, 'norma')} />
             </View>
-
-            <Subheader text="Espécie Vegetal (nome científico):"  />
-            <View style={styles.button}>
-                <button  value="adssad"  />
-            </View>
+            <button onClick={store.clean} className="form-button" style={{width: 100}}>Limpar</button>
+            <Result />
         </View>
       );
   }
@@ -78,7 +75,7 @@ const styles = StyleSheet.create<any>({
     }
 });
 
-const Subheader = ({text}) => (
+/*const Subheader = ({text}) => (
            <View
                 style={substyles.container}
             >
@@ -91,10 +88,10 @@ const Subheader = ({text}) => (
                     {text}
                 </Text>
             </View>
-);
+);*/
 
 //{paddingLeft: inset ? 72 : 16 }
-
+/*
 const substyles = StyleSheet.create({
     container: {
         padding: 4,
@@ -103,7 +100,6 @@ const substyles = StyleSheet.create({
     //text: TYPO.paperFontBody1,
 });
 
-/*
 <Text style={styles.field}
                 onPress={() => actions.search({
                     source: 'listaNomesSci', field: 'hospSci',

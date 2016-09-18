@@ -1,3 +1,6 @@
+declare module 'react-router' 
+declare module 'react-select' 
+
 declare module 'react-native-material-design' {
 	import * as React from 'react';
 

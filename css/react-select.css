@@ -37,11 +37,11 @@
   display: table;
   border-spacing: 0;
   border-collapse: separate;
-  height: 36px;
+  height: 26px;
   outline: none;
   overflow: hidden;
   position: relative;
-  width: 100%;
+  width: 50%;
 }
 .Select-control:hover {
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
@@ -74,7 +74,7 @@
   bottom: 0;
   color: #aaa;
   left: 0;
-  line-height: 34px;
+  line-height: 24px;
   padding-left: 10px;
   padding-right: 10px;
   position: absolute;
@@ -103,13 +103,13 @@
   text-decoration: underline;
 }
 .Select-input {
-  height: 34px;
+  height: 24px;
   padding-left: 10px;
   padding-right: 10px;
   vertical-align: middle;
 }
 .Select-input > input {
-  width: 100%;
+  width: 50%;
   background: none transparent;
   border: 0 none;
   box-shadow: none;
@@ -239,7 +239,7 @@
   max-height: 200px;
   position: absolute;
   top: 100%;
-  width: 100%;
+  width: 50%;
   z-index: 1;
   -webkit-overflow-scrolling: touch;
 }

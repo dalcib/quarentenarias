@@ -5,7 +5,9 @@ import Base from './basex';
 import Menu from './menu';*/
 import Result from './results';
 import Form from './form';
-import store from './store';
+import Praga from './praga';
+//import store from './store';
+import { BrowserRouter as Router, Match, Miss } from 'react-router'
 //import DevTools from 'mobx-react-devtools'
 //        <DevTools />
 
@@ -37,9 +39,15 @@ export default class App extends React.Component<{store: any}, {}> {
 
         <div id="corpo">
           <div id="conteúdo">
-
-            <Form store={store}/>
-            <Result />
+            <Router>
+              <div>
+                <Match exactly pattern="/" component={Form} />
+                <Match pattern="/result" component={Result} />
+                <Match pattern="/pest/:praga" component={Praga} />
+                <Match pattern="/pest" component={Praga} />
+                <Miss component={NoMatch} />
+              </div>
+            </Router>
 
           </div>
           <br/>
@@ -47,7 +55,7 @@ export default class App extends React.Component<{store: any}, {}> {
             Este Sistema está em fase de HOMOLOGAÇÃO, devido a isso as informações obtidas devem ser verificadas na legislação pertinente.
           </p>
           <p className="small red center ">
-            ccSe for encontrada alguma informação que não reflita corretamente a legislação, favor informar o SSV-MT no e-mail abaixo.
+            Se for encontrada alguma informação que não reflita corretamente a legislação, favor informar o SSV-MT no e-mail abaixo.
           </p>
           <br/>
           <p className="small center">
@@ -64,5 +72,11 @@ export default class App extends React.Component<{store: any}, {}> {
     )
   }
 }
+
+const NoMatch = ({ location }) => (
+  <div>
+    <h3>No match for <code>{location.pathname}</code></h3>
+  </div>
+)
 
 //ReactDom.render(<App store={store}/>, document.getElementById('app'));
